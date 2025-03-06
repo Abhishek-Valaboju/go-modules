@@ -1,0 +1,42 @@
+Check CPU Usage
+Run this command in another terminal:
+
+go tool pprof
+http://localhost:6060/debug/pprof/profile?seconds=30
+
+Then analyze:
+(pprof) top
+(pprof) list cpuIntensiveTask
+(pprof) web  # Generates a graph
+
+Check Memory Usage
+Run:
+go tool pprof
+http://localhost:6060/debug/pprof/heap
+
+Analyze:
+(pprof) top
+(pprof) list memoryLeakTask
+(pprof) web
+
+Generate a Trace File
+Run:
+wget http://localhost:6060/debug/pprof/trace?seconds=10 -O trace.out
+
+Analyze with go tool trace
+
+go tool trace trace.out
+
+Debug Deadlocks Using Delve
+Run the Program in Delve
+dlv debug
+Check for Deadlocks
+(dlv) goroutines
+
+Step Through the Code :
+
+(dlv) break deadlockTask
+(dlv) continue
+(dlv) next
+(dlv) print m1
+(dlv) print m2
