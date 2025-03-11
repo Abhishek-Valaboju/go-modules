@@ -3,7 +3,8 @@ package main
 import (
 	"errors"
 	"fmt"
-	"go-modules/advance/04_Complex_Database_Operations/financial-application/pkg"
+	"go-modules/database/financial-application/pkg"
+
 	"log"
 )
 

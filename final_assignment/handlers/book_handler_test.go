@@ -12,9 +12,10 @@ import (
 )
 
 func setupRouter() *gin.Engine {
+	b := BookHandler{}
 	r := gin.Default()
-	r.GET("/books", GetBooks)
-	r.POST("/books", AddBook)
+	r.GET("/books", b.GetBooks)
+	r.POST("/books", b.AddBook)
 	return r
 }
 func TestAddBook(t *testing.T) {
