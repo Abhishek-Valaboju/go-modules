@@ -12,7 +12,7 @@ type BookHandler struct {
 }
 
 func (b *BookHandler) GetBooks(c *gin.Context) {
-	books, err := b.dbFunc.GetAllBooks()
+	books, err := b.DbFunc.GetAllBooks()
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to get books"})
 		return
@@ -25,7 +25,7 @@ func (b *BookHandler) AddBook(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	if err := b.dbFunc.AddBook(&book); err != nil {
+	if err := b.DbFunc.AddBook(&book); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
